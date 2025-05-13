@@ -4,10 +4,6 @@ import Logo from '~/components/Logo.vue';
 import { usePosts } from '~/composables/posts';
 
 const { posts, isLoading } = usePosts();
-
-watch(posts, (newPosts) => {
-    console.log('Posts updated:', newPosts);
-});
 </script>
 
 <template>
