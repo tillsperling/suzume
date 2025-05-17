@@ -10,7 +10,7 @@ const { posts, isLoading } = usePosts();
     <div class="container">
         <Logo />
         <div class="link-wrapper">
-            <div v-for="post in posts" :key="post" class="link-item">
+            <div v-for="post in posts" :key="post.id" class="link-item">
                 <nuxt-link
                     :to="`/${post.slug}`"
                     class="link"
@@ -30,6 +30,7 @@ const { posts, isLoading } = usePosts();
     align-items: center;
     justify-content: center;
     height: 100vh;
+    max-width: 100vw;
 }
 .link-wrapper {
     display: flex;
@@ -43,7 +44,7 @@ const { posts, isLoading } = usePosts();
 .link {
     text-decoration: none;
     color: #d3c8b9;
-    font-size: 1rem;
+    font-size: 1.25rem;
 }
 
 .active {

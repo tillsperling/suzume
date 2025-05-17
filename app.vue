@@ -1,16 +1,12 @@
 <template>
-    <div>
-        <NuxtPage />
-    </div>
+    <UApp>
+        <div>
+            <NuxtPage />
+        </div>
+    </UApp>
 </template>
 
 <style lang="scss">
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
     background-color: #fff2de;
     font-family: 'Source Code Pro', sans-serif;

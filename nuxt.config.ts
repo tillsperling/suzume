@@ -3,7 +3,7 @@ export default defineNuxtConfig({
     ssr: false,
     compatibilityDate: '2024-11-01',
     devtools: { enabled: true },
-    modules: ['@nuxtjs/google-fonts', '@pinia/nuxt'],
+    modules: ['@nuxtjs/google-fonts', '@pinia/nuxt', '@nuxt/ui'],
     googleFonts: {
         families: {
             Timmana: [400],
@@ -15,4 +15,5 @@ export default defineNuxtConfig({
             backendUrl: process.env.BACKEND_URL,
         },
     },
+    css: ['~/assets/css/main.css'],
 });

@@ -18,12 +18,12 @@ export async function fetchPosts() {
 export const usePosts = () => {
     const {
         data: posts,
-        isLoading,
+        isLoading: postsLoading,
         error,
     } = useQuery({
         key: ['posts'],
         query: fetchPosts,
     });
 
-    return { posts, isLoading, error };
+    return { posts, postsLoading, error };
 };
