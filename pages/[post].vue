@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import type { CurrentPost } from '~/interfaces/posts';
+import type { ImageCollection } from '~/interfaces/imageCollection';
 
 import { useRoute } from 'vue-router';
 import { usePosts } from '~/composables/posts';
@@ -23,7 +24,7 @@ watch(
         if (!loading && posts.value) {
             currentPost.value = posts.value.find(
                 (post) => post.slug === postSlug
-            );
+            ) as CurrentPost | undefined;
         }
     },
     { immediate: true }
@@ -34,7 +35,7 @@ watch(
     ([post, imageList]) => {
         if (post && imageList) {
             image.value = imageList.find(
-                (img) => img.id === currentPost.value.images
+                (img) => img.id === currentPost.value?.images
             );
         }
     },
@@ -59,7 +60,7 @@ onMounted(() => {
     });
 });
 
-const generateImageArrayWithUrls = (imageCollection) => {
+const generateImageArrayWithUrls = (imageCollection: ImageCollection) => {
     const array = [];
     const collectionId = imageCollection.collectionId;
     const id = imageCollection.id;
@@ -93,7 +94,7 @@ const setFullScreen = () => {
         :class="{ 'scroll-top': isScrolledTop }"
     >
         <img
-            :src="item"
+            :src="item as string"
             height="100"
             class="corousel-item"
             @click="setFullScreen"
@@ -134,11 +135,17 @@ const setFullScreen = () => {
 
 h1 {
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.5rem;
+    @media screen and (min-width: 768px) {
+        font-size: 2rem;
+    }
 }
 
 p {
     text-align: left;
-    font-size: 1.5rem;
+    font-size: 1rem;
+    @media screen and (min-width: 768px) {
+        font-size: 1rem;
+    }
 }
 </style>
