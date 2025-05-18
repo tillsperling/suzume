@@ -3,7 +3,7 @@ import Logo from '~/components/Logo.vue';
 
 import { usePosts } from '~/composables/posts';
 
-const { posts, isLoading } = usePosts();
+const { posts } = usePosts();
 </script>
 
 <template>
@@ -12,12 +12,16 @@ const { posts, isLoading } = usePosts();
         <div class="link-wrapper">
             <div v-for="post in posts" :key="post.id" class="link-item">
                 <nuxt-link
+                    v-if="post.active"
                     :to="`/${post.slug}`"
                     class="link"
                     :class="{ active: post.active }"
                 >
                     <p class="title">{{ post.title }}</p>
                 </nuxt-link>
+                <span v-else class="link">
+                    <p class="title">{{ post.title }}</p>
+                </span>
             </div>
         </div>
     </div>
